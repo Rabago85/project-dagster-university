@@ -1,19 +1,17 @@
-import dagster as dg
 from pathlib import Path
 
+import dagster as dg
+from dagster_components import build_component_defs
 
-from .assets import dbt, metrics, requests, trips
+from .assets import metrics, requests, trips
 
 # from .jobs import adhoc_request_job, trip_update_job, weekly_update_job
 from .jobs import adhoc_request_job, weekly_update_job
-from .resources import database_resource, dbt_resource
+from .resources import database_resource
 
 # from .schedules import trip_update_schedule, weekly_update_schedule
 from .schedules import weekly_update_schedule
 from .sensors import adhoc_request_sensor
-
-from dagster_components import build_component_defs
-
 
 trip_assets = dg.load_assets_from_modules([trips])
 metric_assets = dg.load_assets_from_modules(
@@ -24,7 +22,6 @@ requests_assets = dg.load_assets_from_modules(
     modules=[requests],
     group_name="requests",
 )
-# dbt_analytics_assets = dg.load_assets_from_modules(modules=[dbt])
 
 all_jobs = [weekly_update_job, adhoc_request_job]
 all_schedules = [weekly_update_schedule]
@@ -37,11 +34,12 @@ defs = dg.Definitions.merge(
             *trip_assets,
             *metric_assets,
             *requests_assets,
-            # Replace by components
+            # Remove in favor of components
             # *dbt_analytics_assets,
         ],
         resources={
             "database": database_resource,
+            # Resource no longer necessary
             # "dbt": dbt_resource,
         },
         jobs=all_jobs,
@@ -50,5 +48,5 @@ defs = dg.Definitions.merge(
     ),
     build_component_defs(
         components_root=Path(__file__).parent / "lesson_8/defs",
-    )
+    ),
 )

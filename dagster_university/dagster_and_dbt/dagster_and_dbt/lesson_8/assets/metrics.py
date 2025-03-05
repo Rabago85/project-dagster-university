@@ -128,7 +128,7 @@ def manhattan_map() -> dg.MaterializeResult:
 
 
 @dg.asset(
-    deps=["location_metrics"],
+    deps=["taxi_location_metrics"],
 )
 def airport_trips(database: DuckDBResource) -> dg.MaterializeResult:
     """

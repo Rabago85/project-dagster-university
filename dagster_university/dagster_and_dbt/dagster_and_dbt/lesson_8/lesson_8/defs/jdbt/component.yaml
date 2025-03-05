@@ -3,3 +3,5 @@ type: dagster_components.dagster_dbt.DbtProjectComponent
 attributes:
   dbt:
     project_dir: ../../../analytics
+  asset_attributes:
+    key: "taxi_{{ node.name }}"
