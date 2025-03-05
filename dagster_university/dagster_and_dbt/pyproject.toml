@@ -20,6 +20,7 @@ dependencies = [
     "smart_open",
     "boto3",
     "pyarrow",
+    "dagster-dg",
 ]
 
 [tool.uv]
