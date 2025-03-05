@@ -491,6 +491,7 @@ dependencies = [
     { name = "boto3" },
     { name = "dagster" },
     { name = "dagster-cloud" },
+    { name = "dagster-components", extra = ["dbt"] },
     { name = "dagster-dbt" },
     { name = "dagster-dg" },
     { name = "dagster-duckdb" },
@@ -516,6 +517,7 @@ requires-dist = [
     { name = "boto3" },
     { name = "dagster", specifier = "==1.9.*" },
     { name = "dagster-cloud" },
+    { name = "dagster-components", extras = ["dbt"], specifier = ">=0.1.18" },
     { name = "dagster-dbt" },
     { name = "dagster-dg" },
     { name = "dagster-duckdb" },
@@ -574,6 +576,24 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f4/9a/c797e306e9b4d9b8603a4ec4b203375e5f18a6859683fb599643abcf4fa0/dagster_cloud_cli-1.9.10.tar.gz", hash = "sha256:b733b805a6b60dac780cdbab76363a6352aab58eaccd5aa5869c80529c29f01e", size = 71708 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/30/f0/39ac281f38d290a9975df5931833b4f1f2d050ce429b57ccab9f5b7660c0/dagster_cloud_cli-1.9.10-py3-none-any.whl", hash = "sha256:626beb5fb54b1169ab08f5ffb767e1dd1c8a98aded7d4081fcdc62d165f51f43", size = 93948 },
+]
+
+[[package]]
+name = "dagster-components"
+version = "0.1.18"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dagster" },
+    { name = "typer" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6a/e6/958e240cfbb9a5fada6d66ac729a8bb73154332f8edfde9e76f63dde31ff/dagster_components-0.1.18.tar.gz", hash = "sha256:e6a6c9208e5ad34ec49d47ba08e0d82b98c9d27dd4d3faaa27800cda5844f1b6", size = 28411 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/32/17/a36755686bf5040f71add0580dd74bb687f043c2ebee7a19886d0498dd83/dagster_components-0.1.18-py3-none-any.whl", hash = "sha256:a6c5ce32af4ce4fe18ada29a1d8457ce7f55919f6a1f0369719fe48e8bf20992", size = 39090 },
+]
+
+[package.optional-dependencies]
+dbt = [
+    { name = "dagster-dbt" },
 ]
 
 [[package]]

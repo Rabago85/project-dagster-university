@@ -1,0 +1,35 @@
+[project]
+name = "lesson_8"
+requires-python = ">=3.9,<3.13"
+version = "0.1.0"
+dependencies = [
+    "dagster-components[dbt]",
+    "dbt-duckdb>=1.9.2",
+]
+
+[project.entry-points]
+"dagster.components" = { lesson_8 = "lesson_8.lib"}
+
+[dependency-groups]
+dev = [
+    "dagster-webserver",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.dagster]
+module_name = "lesson_8.definitions"
+code_location_name = "lesson_8"
+
+[tool.dg]
+directory_type = "project"
+
+[tool.dg.project]
+root_module = "lesson_8"
+
+[tool.setuptools.packages.find]
+exclude=["lesson_8_tests"]
+
+

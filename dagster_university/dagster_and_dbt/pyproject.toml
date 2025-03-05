@@ -21,6 +21,7 @@ dependencies = [
     "boto3",
     "pyarrow",
     "dagster-dg",
+    "dagster-components[dbt]>=0.1.18",
 ]
 
 [tool.uv]
