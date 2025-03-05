@@ -1,5 +1,4 @@
 import dagster as dg
-from dagster_dbt import build_dbt_asset_selection
 
 # from .assets.dbt import dbt_analytics
 from .partitions import weekly_partition

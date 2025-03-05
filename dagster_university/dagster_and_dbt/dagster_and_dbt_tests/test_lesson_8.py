@@ -53,19 +53,24 @@ def test_trips_by_week_partitioned_assets(setup_dbt_env):  # noqa: F811
     assert result.success
 
 
-# @pytest.mark.parametrize("setup_dbt_env", ["lesson_8"], indirect=True)
-# def test_dbt_partitioned_incremental_assets(setup_dbt_env):  # noqa: F811
-#     from dagster_components import build_component_defs
+# TODO: Get access to components assets
+@pytest.mark.skip
+@pytest.mark.parametrize("setup_dbt_env", ["lesson_8"], indirect=True)
+def test_dbt_partitioned_incremental_assets(setup_dbt_env):  # noqa: F811
+    from dagster_components import build_component_defs
 
-#     build_component_defs(
-#         components_root=Path(__file__).parent / "../dagster_and_dbt/lesson_8/defs",
-#     ),
+    (
+        build_component_defs(
+            components_root=Path(__file__).parent
+            / "../dagster_and_dbt/lesson_8/lesson_8/defs",
+        ),
+    )
 
-#     result = dg.materialize(
-#         assets=[build_component_defs.assets],
-#         partition_key="2023-01-01",
-#     )
-#     assert result.success
+    result = dg.materialize(
+        assets=[build_component_defs.assets],
+        partition_key="2023-01-01",
+    )
+    assert result.success
 
 
 @pytest.mark.parametrize("setup_dbt_env", ["lesson_8"], indirect=True)
